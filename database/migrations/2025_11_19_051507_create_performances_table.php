@@ -18,6 +18,7 @@ return new class extends Migration
             $table->longText('description_eng');
             $table->longText('description_esp');
             $table->longText('images');
+            $table->longText('links');
             $table->timestamps();
         });
         CuratorMigrationHelper::migratePivotTable('performance_media', 'performance_id');

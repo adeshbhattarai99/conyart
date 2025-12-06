@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Performances\Schemas;
 
+use App\Models\Performance;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\RepeatableEntry;
 use Filament\Infolists\Components\TextEntry;
@@ -48,7 +49,9 @@ class PerformanceInfolist
                         Section::make('Gallery')
                             ->schema([
                                 // This is the nuclear option that always works
-                                
+                                ImageEntry::make('images')
+                                    ->hiddenLabel()
+                                    ->disk('public'),
                             ])
                             ->columnSpanFull(),
                         TextEntry::make('created_at')

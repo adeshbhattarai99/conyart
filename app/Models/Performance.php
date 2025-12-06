@@ -13,11 +13,13 @@ class Performance extends Model
         'description_eng',
         'description_esp',
         'images',
+        'links',
     ];
     protected function casts(): array
     {
         return [
             'images' => 'array',
+            'links' => 'array',
         ];
     }
 
