@@ -3,6 +3,7 @@
 use App\Http\Controllers\BioController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalponController;
+use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\WorkshopController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,12 @@ Route::get('/workshops', [WorkshopController::class, 'index'])
 
 Route::get('/contact', [ContactController::class, 'index'])
         ->name('contact');
+
+    // routes/web.php
+Route::get('/performance/{performance}', [PerformanceController::class, 'show'])
+     ->name('performances.show');
+
+
+Route::get('/test', function () {
+    return view('test');
+});
