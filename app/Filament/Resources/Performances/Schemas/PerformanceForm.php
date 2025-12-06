@@ -32,12 +32,29 @@ class PerformanceForm
                             ->hiddenLabel()
                             ->multiple()
                             ->directory('performance_media')
+                            ->disk('public')                    // important
                             ->visibility('public')
-                            ->preserveFilenames(true),
-                        // ->relationship('performanceImages', 'id'),
+                            ->preserveFilenames()
+                            ->reorderable()
+                            ->appendFiles()                      // keeps existing + adds new
+                            ->image()
+                            ->imageEditor()
+                            ->imageEditorAspectRatios([
+                                '16:9',
+                                '4:3',
+                                '1:1',
+                            ])
+                            ->imageEditorMode(2)
+                            ->maxFiles(30)
+                            ->panelLayout('grid')                // shows nice grid preview while editing
+                            ->previewable(true)                  // shows thumbnails
+                            ->reorderable()                      // drag to reorder
+                            ->required()
+                            ->helperText('Drag to reorder. Existing images are preserved.'),
                     ]),
+
                 Section::make('Description')
-                    ->columnSpanFull()
+                    // ->columnSpanFull()
                     ->schema([
                         Tabs::make('description')
                             ->tabs([
@@ -71,6 +88,19 @@ class PerformanceForm
                                     ]),
                             ]),
                     ]),
+
+                Section::make('Video Links')
+                    ->schema([
+                        Repeater::make('links')
+                            ->hiddenLabel()
+                            ->schema([
+                                TextInput::make('links')
+                                    ->hiddenLabel()
+                                    ->url(),
+                            ]),
+                    ]),
+
+
                 // Section::make('Links')
                 //             ->columnSpanFull()
                 //     ->schema([
