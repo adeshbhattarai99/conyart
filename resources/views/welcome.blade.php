@@ -19,7 +19,7 @@
 
 
 <!-- MAIN — 8px from top + perfectly uniform gaps -->
-    <main class="flex-1 bg-white">
+    <main class="flex-1 ml-80 bg-white">
         <div class="pt-12 px-4 md:px-6 lg:px-8"> <!-- 8px top + uniform side gaps -->
             <div class="grid grid-cols-3 gap-4 md:gap-6 lg:gap-8">
 

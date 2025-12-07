@@ -13,7 +13,7 @@
 
     <x-navbar />
 
-    <main class="flex-1 pb-10">
+    <main class="flex-1 ml-80 pb-10">
         <div class="pt-12 px-4 md:px-6 lg:px-10">
             <div class="max-w-screen-2xl mx-auto">
 

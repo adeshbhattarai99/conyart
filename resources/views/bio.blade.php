@@ -15,7 +15,7 @@
 
     <x-navbar />
 
-    <main class="flex-1">
+    <main class="flex-1 ml-80">
         <div class="pt-12 px-4 md:px-6 lg:px-8">
             <div class="max-w-screen-2xl mx-auto">
 
@@ -46,11 +46,11 @@
                             <p class="font-semibold">DANCER, PERFORMER & ACTRESS</p>
                             <p>Professional Dance Instructor</p>
                             <p>
-                                Founder of 
-                                <a href="/galpon" 
-                                   class="text-red-600 hover:text-red-700 font-medium underline underline-offset-4 transition-colors">
+                                Founder of
+                                <a href="/galpon"
+                                   class="text-red-600 hover:text-red-700 font-medium  transition-colors">
                                     Galpon Multiespacio
-                                </a> 
+                                </a>
                                 Theatre
                             </p>
                         </div>
