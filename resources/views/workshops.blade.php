@@ -1,4 +1,4 @@
-{{-- resources/views/workshops.blade.php --}}
+{{-- resources/views/workshops.blade.php – FINAL & FULLY RESPONSIVE --}}
 <!DOCTYPE html>
 <html lang="en" class="h-full">
 <head>
@@ -6,29 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workshops | Constanza Bitthoff</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Poppins', sans-serif; }
-
     </style>
 </head>
-<body class="h-screen flex bg-white text-gray-900">
+<body class="min-h-screen flex flex-col lg:flex-row bg-white text-gray-900">
 
     <x-navbar />
 
-    <main class="flex-1 ml-80 pb-10">
-        <div class="pt-12 px-4 md:px-6 lg:px-10">
+    <main class="flex-1 lg:ml-80 mt-10 pt-20 lg:pt-12 bg-white pb-10">
+        <div class="px-4 md:px-6 lg:px-10">
             <div class="max-w-screen-2xl mx-auto">
 
-                <!-- HERO + TEXT: same as Galpón -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
-                    <div class="overflow-hidden rounded-sm">
+                <!-- HERO + TEXT SECTION -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-16">
+
+                    <!-- Hero Image — full width on mobile/tablet -->
+                    <div class="overflow-hidden rounded-sm order-1">
                         <img src="{{ asset('photos/workshops/workshophero.jpeg') }}"
                              alt="Workshops"
                              class="w-full h-full object-cover">
                     </div>
 
-                    <div class="space-y-8">
+                    <!-- Title + Bilingual Text -->
+                    <div class="space-y-8 order-2">
                         <div>
                             <h1 class="text-4xl font-light uppercase tracking-widest mb-1">
                                 Workshops
@@ -38,8 +43,8 @@
 
                         <!-- ENGLISH -->
                         <div class="text-lg leading-relaxed text-gray-800">
-                            <p class="font-medium text-gray-600 text-sm uppercase tracking-wider">ENG</p>
-                            <p>
+                            <p class="font-medium text-gray-600 text-sm uppercase tracking-wider mb-2">ENG</p>
+                            <p class="text-justify">
                                 The Workshops are aimed at people who want to investigate new expressive physical tools,
                                 for scenic composition or for their own training. These tools come from Dance and Physical Theater,
                                 the support is always the body itself.
@@ -50,9 +55,9 @@
                         </div>
 
                         <!-- SPANISH -->
-                        <div class="text-lg leading-relaxed text-gray-800 border-t border-gray-200">
-                            <p class="font-medium text-gray-600 text-sm uppercase tracking-wider">ESP</p>
-                            <p>
+                        <div class="text-lg leading-relaxed text-gray-800 border-t border-gray-200 pt-6">
+                            <p class="font-medium text-gray-600 text-sm uppercase tracking-wider mb-2">ESP</p>
+                            <p class="text-justify">
                                 Los Talleres se orientan a personas que buscan investigar nuevas herramientas físicas expresivas,
                                 para la composición escénica o para su propio entrenamiento. Estas herramientas provienen de la Danza
                                 y del Teatro Físico, el soporte siempre es el propio cuerpo.
@@ -64,20 +69,30 @@
                     </div>
                 </div>
 
-                <!-- GALLERY: exactly 2 per row, same tight spacing as Galpón -->
-                <div class="grid grid-cols-2 gap-4 mt-4 lg:mt-4">
+                <!-- GALLERY — 2×2 on desktop, 1 column on mobile/tablet -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+
                     <div class="overflow-hidden rounded-sm shadow-xl">
-                        <img src="{{ asset('photos/workshops/workshop1.jpeg') }}" class="w-full h-full object-cover gallery-img">
+                        <img src="{{ asset('photos/workshops/workshop1.jpeg') }}"
+                             alt="Workshop 1"
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                     </div>
                     <div class="overflow-hidden rounded-sm shadow-xl">
-                        <img src="{{ asset('photos/workshops/workshop2.jpeg') }}" class="w-full h-full object-cover gallery-img">
+                        <img src="{{ asset('photos/workshops/workshop2.jpeg') }}"
+                             alt="Workshop 2"
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                     </div>
                     <div class="overflow-hidden rounded-sm shadow-xl">
-                        <img src="{{ asset('photos/workshops/workshop3.jpeg') }}" class="w-full h-full object-cover gallery-img">
+                        <img src="{{ asset('photos/workshops/workshop3.jpeg') }}"
+                             alt="Workshop 3"
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                     </div>
                     <div class="overflow-hidden rounded-sm shadow-xl">
-                        <img src="{{ asset('photos/workshops/workshop4.jpg') }}" class="w-full h-full object-cover gallery-img">
+                        <img src="{{ asset('photos/workshops/workshop4.jpg') }}"
+                             alt="Workshop 4"
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                     </div>
+
                 </div>
 
             </div>
@@ -85,6 +100,5 @@
 
         <x-copyright />
     </main>
-
 </body>
 </html>

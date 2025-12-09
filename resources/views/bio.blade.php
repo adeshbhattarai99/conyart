@@ -1,4 +1,4 @@
-{{-- resources/views/bio.blade.php --}}
+{{-- resources/views/bio.blade.php – FINAL WITH JUSTIFIED TEXT --}}
 <!DOCTYPE html>
 <html lang="en" class="h-full">
 <head>
@@ -6,23 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bio | Constanza Bitthoff</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Poppins', sans-serif; }
     </style>
 </head>
-<body class="h-screen flex bg-white text-gray-900">
+<body class="min-h-screen flex flex-col lg:flex-row bg-white text-gray-900">
 
     <x-navbar />
 
-    <main class="flex-1 ml-80">
-        <div class="pt-12 px-4 md:px-6 lg:px-8">
+    <main class="flex-1 lg:ml-80 mt-10 pt-20 lg:pt-12 bg-white">
+        <div class="px-4 md:px-6 lg:px-8">
             <div class="max-w-screen-2xl mx-auto">
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
-                    <!-- Image – left side -->
-                    <div class="lg:col-span-4 order-1">
+                    <!-- Portrait Image -->
+                    <div class="lg:col-span-4">
                         <div class="overflow-hidden rounded-sm">
                             <img src="{{ asset('photos/SLY_9180.jpg') }}"
                                  alt="Constanza Bitthoff"
@@ -30,8 +33,8 @@
                         </div>
                     </div>
 
-                    <!-- Text + Email – right side, everything in correct order -->
-                    <div class="lg:col-span-7 order-2 flex flex-col space-y-10">
+                    <!-- Bio Content -->
+                    <div class="lg:col-span-8 flex flex-col space-y-10">
 
                         <!-- Title -->
                         <div>
@@ -42,21 +45,20 @@
                         </div>
 
                         <!-- Short intro -->
-                        <div class="text-xl leading-relaxed text-gray-800 space-y-1 mt-1">
+                        <div class="text-xl leading-relaxed text-gray-800 space-y-1">
                             <p class="font-semibold">DANCER, PERFORMER & ACTRESS</p>
                             <p>Professional Dance Instructor</p>
                             <p>
                                 Founder of
-                                <a href="/galpon"
-                                   class="text-red-600 hover:text-red-700 font-medium  transition-colors">
+                                <a href="/galpon" class="text-red-600 hover:text-red-700 font-medium transition-colors">
                                     Galpon Multiespacio
                                 </a>
                                 Theatre
                             </p>
                         </div>
 
-                        <!-- Long description – increased text size -->
-                        <div class="text-lg leading-relaxed text-gray-700 space-y-5">
+                        <!-- Long description – NOW FULLY JUSTIFIED -->
+                        <div class="text-lg leading-relaxed text-gray-700 space-y-5 text-justify">
                             <p>
                                 <strong>Constanza Bitthoff</strong> is an Argentinian contemporary dancer & artist who received her education at the <strong>University of Cuba</strong>. She completed postgraduate studies in Art and Body in Barcelona, Spain.
                             </p>
@@ -71,7 +73,7 @@
                             </p>
                         </div>
 
-                        <!-- Email – now correctly below all text -->
+                        <!-- Email -->
                         <div class="pt-4">
                             <a href="mailto:constanzabitthoff@gmail.com"
                                class="inline-flex items-center gap-3 text-red-600 hover:text-red-800 text-lg font-medium transition-colors">
@@ -81,7 +83,6 @@
                                 constanzabitthoff@gmail.com
                             </a>
                         </div>
-
                     </div>
                 </div>
             </div>
