@@ -10,13 +10,21 @@
                 <img src="{{ asset('photos/coni-logo-7.png') }}" alt="Constanza Bitthoff" class="h-20 w-auto">
             </a>
 
-            <button @click="mobileOpen = !mobileOpen" class="relative w-9 h-9 focus:outline-none">
-                <span class="block absolute h-0.5 w-8 bg-black transform transition-all duration-300 top-2.5"
-                    :class="mobileOpen ? 'rotate-45 translate-y-3' : '-translate-y-1.5'"></span>
-                <span class="block absolute h-0.5 w-8 bg-black transition-all duration-200 top-4.5"
+            <!-- ULTIMATE CLEAN HAMBURGER → X (works perfectly every time) -->
+            <button @click="mobileOpen = !mobileOpen" class="relative w-12 h-12 focus:outline-none z-50"
+                aria-label="Toggle menu">
+
+                <!-- Top line → rotates + moves down -->
+                <span class="absolute left-2 top-4 w-8 h-0.5 bg-black transition-all duration-300 ease-out"
+                    :class="mobileOpen ? 'rotate-45 translate-y-2' : 'rotate-0 translate-y-0'"></span>
+
+                <!-- Middle line → disappears -->
+                <span class="absolute left-2 top-6 w-8 h-0.5 bg-black transition-all duration-300 ease-out"
                     :class="mobileOpen ? 'opacity-0' : 'opacity-100'"></span>
-                <span class="block absolute h-0.5 w-8 bg-black transform transition-all duration-300 top-6.5"
-                    :class="mobileOpen ? '-rotate-45 -translate-y-3' : 'translate-y-1.5'"></span>
+
+                <!-- Bottom line → rotates + moves up -->
+                <span class="absolute left-2 top-8 w-8 h-0.5 bg-black transition-all duration-300 ease-out"
+                    :class="mobileOpen ? '-rotate-45 -translate-y-2' : 'rotate-0 translate-y-0'"></span>
             </button>
         </div>
 
