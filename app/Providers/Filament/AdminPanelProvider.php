@@ -38,9 +38,9 @@ class AdminPanelProvider extends PanelProvider
             ->pages([
                 Dashboard::class,
             ])
-            // ->darkMode(false)
-            ->brandLogo(asset('photos/coni-logo-7.png'))
-            ->brandLogoHeight('5rem')
+            // ->lightMode(false)
+            ->brandLogo(asset('photos/image.png'))
+            ->brandLogoHeight('8rem')
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->widgets([
