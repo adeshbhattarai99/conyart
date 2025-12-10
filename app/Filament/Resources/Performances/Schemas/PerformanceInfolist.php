@@ -39,14 +39,14 @@ class PerformanceInfolist
                                 TextEntry::make('links')
                                     ->hiddenLabel()
                                     ->formatStateUsing(fn($state) => $state ? collect($state)->map(function ($link) {
-                                        return "<a href='{$link}' target='_blank' class='text-2xl lg:text-3xl font-medium text-red-600 hover:text-red-700 hover:underline transition-colors block mt-4'>
+                                        return "<a href='{$link}' target='_blank' class='text-sm font-medium hover:underline transition-colors block mt-4'>
                   <span class='mr-2'></span>{$link}
                 </a>";
                                     })->implode('') : null)
                                     ->html()
                                     ->hidden(fn($record) => blank($record->links))
                             ]),
-                        Section::make('Gallery')
+                        Section::make('Images')
                             ->schema([
                                 // This is the nuclear option that always works
                                 ImageEntry::make('images')
