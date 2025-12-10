@@ -7,7 +7,7 @@
         <!-- Top bar — stays visible -->
         <div class="flex items-center justify-between px-6 py-5 bg-white sticky top-0 z-50 ">
             <a href="{{ route('welcome') }}">
-                <img src="{{ asset('photos/coni-logo-7.png') }}" alt="Constanza Bitthoff" class="h-10 w-auto">
+                <img src="{{ asset('photos/coni-logo-7.png') }}" alt="Constanza Bitthoff" class="h-20 w-auto">
             </a>
 
             <button @click="mobileOpen = !mobileOpen" class="relative w-9 h-9 focus:outline-none">
