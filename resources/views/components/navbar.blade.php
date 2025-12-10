@@ -35,13 +35,12 @@
                     <a href="{{ route('galpon') }}" @click="mobileOpen = false"
                         class="block text-gray-600 hover:text-black transition">Galpon Multiespacio</a>
                     <a href="{{ route('workshops') }}" @click="mobileOpen = false"
-                        class="block text-gray-600 hover:text-black transition">Workshops</a>
+                        class="block pt-1 text-gray-600 hover:text-black transition">Workshops</a>
                 </div>
             </nav>
 
-            <!-- Social Icons — FIXED at bottom, horizontal -->
             <!-- Social Icons — Smart auto-justified on all mobile sizes -->
-            <div class="border-t border-gray-100 px-6 sm:px-10 py-6 bg-white">
+            <div class=" px-6 sm:px-10 py-6 bg-white">
                 <div
                     class="flex justify-center sm:justify-start items-center
                 gap-8 sm:gap-10 md:gap-12
@@ -74,7 +73,7 @@
                     </a>
 
                     <!-- YouTube -->
-                    <a href="https://www.youtube.com/@gaunkocheese" target="_blank" class="group">
+                    <a href="https://www.youtube.com/@constanzabitthoff" target="_blank" class="group">
                         <div class="w-10 h-10 flex items-center justify-center">
                             <svg class="w-8 h-8 text-gray-800 transition-all duration-300 ease-in-out"
                                 viewBox="0 0 24 24">

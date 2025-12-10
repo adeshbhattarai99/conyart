@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Responsive Tailwind Masonry Gallery</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <x-embed-styles />
+
 </head>
 <body class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
 
@@ -56,5 +58,7 @@
     </div>
 </div>
 
+<div class="mt-8 justify-center text-white">
+    <x-embed url="https://www.youtube.com/watch?v=E9SxHx6drh0" />
 </body>
 </html>
