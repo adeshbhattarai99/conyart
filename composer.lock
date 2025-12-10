@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d0a47056e03e3c9495968241ef7332c",
+    "content-hash": "b71a099b26307e68f6ffcc4bc7e6035c",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -152,6 +152,78 @@
                 }
             ],
             "time": "2025-06-06T17:26:17+00:00"
+        },
+        {
+            "name": "bensampo/laravel-embed",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BenSampo/laravel-embed.git",
+                "reference": "6692360e65a2f024900a56a564ca23da6ef3d145"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BenSampo/laravel-embed/zipball/6692360e65a2f024900a56a564ca23da6ef3d145",
+                "reference": "6692360e65a2f024900a56a564ca23da6ef3d145",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3.1|^7.0",
+                "illuminate/contracts": "^8.83.27|^9.0|^10.0|^11.0|^12.0",
+                "illuminate/support": "^8.83.27|^9.0|^10.0|^11.0|^12.0",
+                "php": "^7.4.0|^8.0"
+            },
+            "require-dev": {
+                "laravel/framework": "^8.83.27|^9.0|^10.0|^11.0|^12.0",
+                "orchestra/testbench": "^5.0|^6.0|^9.0|^10.0",
+                "phpunit/phpunit": "^8.5.23|^9.0|^10.5|^11.5.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "BenSampo\\Embed\\EmbedServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BenSampo\\Embed\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Sampson",
+                    "homepage": "https://sampo.co.uk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Painless responsive embeds for videos, slideshows and more.",
+            "homepage": "https://github.com/bensampo/laravel-embed",
+            "keywords": [
+                "bensampo",
+                "embed",
+                "laravel",
+                "package"
+            ],
+            "support": {
+                "issues": "https://github.com/BenSampo/laravel-embed/issues",
+                "source": "https://github.com/BenSampo/laravel-embed/tree/v3.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/bensampo",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-03-26T09:34:51+00:00"
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
