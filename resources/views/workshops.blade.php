@@ -75,22 +75,22 @@
                     <div class="overflow-hidden rounded-sm shadow-xl">
                         <img src="{{ asset('photos/workshops/workshop1.jpeg') }}"
                              alt="Workshop 1"
-                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                             class="w-full h-full object-cover">
                     </div>
                     <div class="overflow-hidden rounded-sm shadow-xl">
                         <img src="{{ asset('photos/workshops/workshop2.jpeg') }}"
                              alt="Workshop 2"
-                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                             class="w-full h-full object-cover">
                     </div>
                     <div class="overflow-hidden rounded-sm shadow-xl">
                         <img src="{{ asset('photos/workshops/workshop3.jpeg') }}"
                              alt="Workshop 3"
-                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                             class="w-full h-full object-cover">
                     </div>
                     <div class="overflow-hidden rounded-sm shadow-xl">
                         <img src="{{ asset('photos/workshops/workshop4.jpg') }}"
                              alt="Workshop 4"
-                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                             class="w-full h-full object-cover">
                     </div>
 
                 </div>

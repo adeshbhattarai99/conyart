@@ -23,7 +23,7 @@
             <div class="max-w-screen-2xl mx-auto">
 
                 <!-- HERO + TEXT: 50/50 on desktop, stacked on mobile/tablet -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-16">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-start mb-16">
                     <div class="overflow-hidden rounded-sm order-1">
                         <img src="{{ asset('photos/galpon/galponhero.jpg') }}"
                              alt="Galpón Multiespacio"
@@ -63,28 +63,24 @@
                     </div>
                 </div>
 
-                <!-- GALLERY — EXACTLY AS YOU REQUESTED -->
-                <div class="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4">
-
-                    <!-- First 4 images — 2×2 on desktop, stacked on tablet/mobile -->
-                    <div class="overflow-hidden rounded-sm shadow-xl">
+                <!-- GALLERY — PERFECT RESPONSIVE BEHAVIOR -->
+                <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-4">
+                    <div class="rounded-sm overflow-hidden">
                         <img src="{{ asset('photos/galpon/galpon1.jpg') }}" class="w-full h-full object-cover">
                     </div>
-                    <div class="overflow-hidden rounded-sm shadow-xl">
+                    <div class="rounded-sm overflow-hidden">
                         <img src="{{ asset('photos/galpon/galpon2.jpg') }}" class="w-full h-full object-cover">
                     </div>
-                    <div class="overflow-hidden rounded-sm shadow-xl">
+                    <div class="rounded-sm overflow-hidden">
                         <img src="{{ asset('photos/galpon/galpon3.jpg') }}" class="w-full h-full object-cover">
                     </div>
-                    <div class="overflow-hidden rounded-sm shadow-xl">
+                    <div class="rounded-sm overflow-hidden">
                         <img src="{{ asset('photos/galpon/galpon4.jpg') }}" class="w-full h-full object-cover">
                     </div>
-
-                    <!-- Last 2 images — HORIZONTAL on tablet/desktop, VERTICAL on mobile -->
-                    <div class="overflow-hidden rounded-sm shadow-xl col-span-2 md:col-span-1 lg:col-span-1">
+                    <div class="rounded-sm overflow-hidden">
                         <img src="{{ asset('photos/galpon/galpon5.jpg') }}" class="w-full h-full object-cover">
                     </div>
-                    <div class="overflow-hidden rounded-sm shadow-xl col-span-2 md:col-span-1 lg:col-span-1">
+                    <div class="rounded-sm overflow-hidden">
                         <img src="{{ asset('photos/galpon/galpon6.jpg') }}" class="w-full h-full object-cover">
                     </div>
                 </div>

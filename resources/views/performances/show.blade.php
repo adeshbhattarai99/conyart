@@ -12,6 +12,12 @@
     <style>
         body { font-family: 'Poppins', sans-serif; }
         [x-cloak] { display: none !important; }
+
+        /* FIX LONG WORDS ON MOBILE */
+        .text-justify-long {
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-white">
@@ -19,123 +25,143 @@
     <x-navbar />
 
     <main class="pt-20 lg:pt-0 lg:ml-80">
-        <div class="max-w-7xl mx-auto px-6 py-12 lg:py-20">
+        <div class="max-w-7xl mx-auto px-6 py-8 lg:py-12">
 
             @php
-                // Clean text
                 $desc_eng = $performance->description_eng ? strip_tags($performance->description_eng, '<strong><em><u><br>') : null;
                 $desc_esp = $performance->description_esp ? strip_tags($performance->description_esp, '<strong><em><u><br>') : null;
 
-                // Extract YouTube URLs from repeater
-                $youtubeUrls = collect($performance->links ?? [])
-                    ->pluck('links')
-                    ->filter()
-                    ->map(fn($url) => trim($url));
+                $youtubeUrls = collect($performance->links ?? [])->pluck('links')->filter()->map(fn($url) => trim($url));
+                $images = collect($performance->images ?? [])->filter()->map(fn($path) => trim($path));
 
-                $images = collect($performance->images ?? [])
-                    ->filter()
-                    ->map(fn($path) => trim($path));
-
-                // First YouTube for hero
                 $firstYoutube = $youtubeUrls->first();
-
-                // Remaining YouTube links (for grid only)
                 $remainingYoutube = $youtubeUrls->skip(1);
-
-                // Images only for masonry
-                $masonryImages = $images;
-
-                // Total items in grid (remaining YouTube + images)
-                $gridItems = $remainingYoutube->count() + $images->count();
             @endphp
 
-            <!-- HERO + TEXT — GALPÓN STYLE -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-16">
-                <div class="overflow-hidden rounded-sm shadow-xl bg-black">
-                    @if($firstYoutube)
+            <!-- HERO + TEXT — TIGHTER SPACING -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4  items-start mb-12">
+                <div class="lg:sticky lg:top-20 rounded-sm overflow-hidden bg-black">
+                    @if ($firstYoutube)
                         <x-embed :url="$firstYoutube" class="w-full aspect-video lg:aspect-square" />
                     @else
-                        <img src="{{ asset('storage/' . $images->first()) }}"
-                             alt="{{ $performance->title }}"
-                             class="w-full h-full object-cover">
+                        <img src="{{ asset('storage/' . $images->first()) }}" class="w-full h-full object-cover">
                     @endif
                 </div>
 
                 <div class="space-y-8">
                     <div>
-                        <h1 class="text-4xl font-light uppercase tracking-widest mb-1">
+                        <h1 class="text-4xl lg:text-5xl font-light uppercase tracking-widest mb-1">
                             {{ $performance->title }}
                         </h1>
                         <div class="w-32 border-t border-gray-400"></div>
                     </div>
 
-                    @if($desc_eng)
+                    @if ($desc_eng)
                         <div class="text-lg leading-relaxed text-gray-800">
                             <p class="font-medium text-gray-600 text-sm uppercase tracking-wider mb-2">ENG</p>
-                            <p class="text-justify">{!! nl2br($desc_eng) !!}</p>
+                            <div class="text-justify text-justify-long max-w-none">
+                                {!! nl2br($desc_eng) !!}
+                            </div>
                         </div>
                     @endif
 
-                    @if($desc_esp)
+                    @if ($desc_esp)
                         <div class="text-lg leading-relaxed text-gray-800 border-t border-gray-200 pt-6">
                             <p class="font-medium text-gray-600 text-sm uppercase tracking-wider mb-2">ESP</p>
-                            <p class="text-justify">{!! nl2br($desc_esp) !!}</p>
+                            <div class="text-justify text-justify-long max-w-none">
+                                {!! nl2br($desc_esp) !!}
+                            </div>
                         </div>
                     @endif
                 </div>
             </div>
 
-            <!-- GRID: YouTube (horizontal) + Images — ≤8 total -->
-            @if($gridItems > 0 && $gridItems <= 8)
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                    <!-- Remaining YouTube links first -->
-                    @foreach($remainingYoutube as $url)
-                        <div class="overflow-hidden rounded-sm shadow-xl bg-black">
-                            <x-embed :url="$url" class="w-full aspect-video" />
-                        </div>
-                    @endforeach
-
-                    <!-- Then images -->
-                    @foreach($images->take(8 - $remainingYoutube->count()) as $img)
-                        <div class="overflow-hidden rounded-sm shadow-xl">
-                            <img src="{{ asset('storage/' . $img) }}"
-                                 alt="{{ $performance->title }}"
-                                 class="w-full h-full object-cover">
-                        </div>
+            <!-- YOUTUBE VIDEOS — TIGHT & UNIFORM -->
+            @if ($remainingYoutube->count() > 0)
+                <div class="space-y-4">
+                    @foreach ($remainingYoutube->chunk(2) as $chunk)
+                        @if ($chunk->count() === 1)
+                            <div class="rounded-sm overflow-hidden bg-black">
+                                <x-embed :url="$chunk->first()" class="w-full aspect-video" />
+                            </div>
+                        @else
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                                @foreach ($chunk as $url)
+                                    <div class="rounded-sm overflow-hidden bg-black">
+                                        <x-embed :url="$url" class="w-full aspect-video" />
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
                     @endforeach
                 </div>
+            @endif
 
-                <!-- If still images left after filling 8 slots → add below -->
-                @if($images->count() > (8 - $remainingYoutube->count()))
-                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
-                        @foreach($images->skip(8 - $remainingYoutube->count()) as $img)
-                            <div class="overflow-hidden rounded-sm shadow-xl">
+            <!-- IMAGES — TIGHT & UNIFORM -->
+            @if ($images->count() > 0)
+                @if ($images->count() <= 6)
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-8 lg:mt-12">
+                        @foreach ($images->take(6) as $img)
+                            <div class="rounded-sm overflow-hidden">
+                                <img src="{{ asset('storage/' . $img) }}" class="w-full h-auto object-cover" loading="lazy">
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-8 lg:mt-12 mb-8">
+                        @foreach ($images->take(6) as $img)
+                            <div class="rounded-sm overflow-hidden">
+                                <img src="{{ asset('storage/' . $img) }}" class="w-full h-auto object-cover" loading="lazy">
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <!-- MASONRY — TIGHT & CLEAN -->
+                    <div class="columns-1 lg:columns-3 xl:columns-4 gap-4">
+                        @foreach ($images->skip(6) as $img)
+                            <div class="mb-4 break-inside-avoid overflow-hidden rounded-sm">
                                 <img src="{{ asset('storage/' . $img) }}"
                                      alt="{{ $performance->title }}"
-                                     class="w-full h-full object-cover">
+                                     class="w-full h-auto object-cover"
+                                     loading="lazy">
                             </div>
                         @endforeach
                     </div>
                 @endif
             @endif
 
-            <!-- MASONRY: ONLY IMAGES (when >8 total or only images) -->
-            @if($masonryImages->count() > max(0, 8 - $remainingYoutube->count()))
-                <div class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-8 mt-20">
-                    @foreach($masonryImages->skip(max(0, 8 - $remainingYoutube->count())) as $img)
-                        <div class="break-inside-avoid mb-8 group overflow-hidden rounded-sm shadow-2xl">
-                            <img src="{{ asset('storage/' . $img) }}"
-                                 alt="{{ $performance->title }}"
-                                 class="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-105"
-                                 loading="lazy">
-                        </div>
-                    @endforeach
+            <!-- 5 RANDOM PERFORMANCES — TIGHTER -->
+            <div class="mt-16 lg:mt-20 py-10 border-t border-b border-gray-200">
+                <div class="text-center mb-8">
+                    <p class="text-sm uppercase tracking-widest text-gray-500">More Performances</p>
                 </div>
-            @endif
+
+                <div class="max-w-4xl mx-auto">
+                    <div class="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-y-6 sm:gap-x-12 lg:gap-x-16">
+                        @foreach (\App\Models\Performance::inRandomOrder()->take(5)->get() as $perf)
+                            <a href="{{ route('performances.show', $perf) }}"
+                               class="w-full sm:w-auto text-left sm:text-center text-xl lg:text-2xl uppercase tracking-widest transition-all duration-300
+                                      {{ $perf->id === $performance->id ? 'text-black font-semibold' : 'text-gray-500 hover:text-black' }}
+                                      sm:hover:scale-105 underline sm:no-underline">
+                                {{ $perf->title }}
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
 
         </div>
     </main>
 
-    <x-copyright />
+    <!-- COPYRIGHT — TIGHT & CENTERED -->
+    <footer class="mt-20 lg:mt-24 lg:ml-80 py-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-0">
+            <div class="text-center">
+                <p class="text-xs lg:text-sm uppercase tracking-widest text-gray-500 leading-relaxed">
+                    Copyright © {{ date('Y') }} Constanza Bitthoff.<br class="lg:hidden"> All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
