@@ -65,7 +65,6 @@ class PerformanceForm
                                             ->toolbarButtons([
                                                 ['bold', 'italic', 'underline', 'strike', 'link'],
                                                 ['h2', 'h3',],
-                                                ['bulletList', 'orderedList'],
                                                 // ['table', 'attachFiles'], // The `customBlocks` and `mergeTags` tools are also added here if those features are used.
                                                 ['undo', 'redo'],
                                             ])
@@ -79,7 +78,6 @@ class PerformanceForm
                                             ->toolbarButtons([
                                                 ['bold', 'italic', 'underline', 'strike', 'link'],
                                                 ['h2', 'h3',],
-                                                ['bulletList', 'orderedList'],
                                                 // ['table', 'attachFiles'], // The `customBlocks` and `mergeTags` tools are also added here if those features are used.
                                                 ['undo', 'redo'],
                                             ])
