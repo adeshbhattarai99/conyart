@@ -23,7 +23,7 @@
             <div class="max-w-screen-2xl mx-auto">
 
                 <!-- HERO + TEXT SECTION -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-16">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4 items-start mb-16">
 
                     <!-- Hero Image — full width on mobile/tablet -->
                     <div class="overflow-hidden rounded-sm order-1">
